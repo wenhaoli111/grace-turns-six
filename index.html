@@ -84,10 +84,10 @@
           <fieldset disabled>
             <legend>Can your family join us?</legend>
             <div class="attendance-options"><label><input type="radio" name="attendance" value="yes"> Yes, we’ll be there!</label><label><input type="radio" name="attendance" value="no"> Sorry, we can’t make it</label></div>
-            <label class="field">Parent or guardian’s name<input type="text" placeholder="Your name" autocomplete="name"></label>
-            <label class="field">Email address<input type="email" placeholder="you@example.com" autocomplete="email"></label>
+            <div class="field"><label for="parent-names">Parent/guardian name(s)</label><input id="parent-names" type="text" placeholder="e.g., Alex Chen and Sam Lee" autocomplete="name" aria-describedby="parent-names-help"><span class="field-help" id="parent-names-help">List one or both parents/guardians.</span></div>
+            <label class="field">Contact email<input type="email" placeholder="you@example.com" autocomplete="email"></label>
             <label class="field">Children’s names<input type="text" placeholder="Names of children attending"></label>
-            <div class="count-fields"><label class="field">Children<select><option>Choose</option></select></label><label class="field">Adults<select><option>Choose</option></select></label></div>
+            <div class="count-fields"><label class="field">Children attending<select><option>Choose</option></select></label><label class="field">Adults attending<select><option>Choose</option></select></label></div>
             <button class="button button-primary" type="submit" disabled>RSVPs open soon</button>
           </fieldset>
         </form>
