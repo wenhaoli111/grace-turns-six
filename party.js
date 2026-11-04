@@ -1,6 +1,6 @@
 // Use the published Google Form responder link, never its private /edit URL.
 const party = Object.freeze({
-  rsvpUrl: "",
+  rsvpUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdM5HC0R8ricC4-9P_1QMaPsA_pINJOzRDnY5neN-7pqtqB5Q/viewform?usp=header",
   rsvpDeadline: ""
 });
 
