@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Grace Birthday//Sixth Birthday//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:grace-sixth-birthday-20261206@birthday.local
+DTSTAMP:20261104T000000Z
+DTSTART:20261206T173000Z
+DTEND:20261206T200000Z
+SUMMARY:Grace’s sixth birthday!
+LOCATION:Scooter’s Jungle South Bay\, 606 Hawaii Street\, El Segundo\, CA
+  90245
+DESCRIPTION:Celebrate Grace turning six! Check-in and safety talk at 9:30 a
+ m. Arena play from 9:45 to 11:15 am\; dining room from 11:15 am to noon. P
+ lease arrive no earlier than 9:25 am. All times are Pacific Standard Time.
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
