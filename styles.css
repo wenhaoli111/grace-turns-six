@@ -32,25 +32,18 @@
   filter: drop-shadow(0 2px 3px #4a2f5e40);
 }
 
-.confetti-button {
-  margin: -6px auto 16px;
-  padding: 5px 13px;
-  border: 1px solid #d9c7df;
-  border-radius: 999px;
-  background: #f5eff8;
-  color: #5e3e72;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
+.party-photo {
+  width: 100%;
+  height: auto;
+  margin: 24px 0 0;
+  border: 6px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #4a2f5e20;
 }
-
-.confetti-button:hover { background: #eadcf1; }
-.confetti-button:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
 
 .confetti-burst {
   position: absolute;
   z-index: 1;
-  inset: 50% 50% auto auto;
   pointer-events: none;
 }
 
@@ -60,25 +53,44 @@
   height: 12px;
   border-radius: 2px;
   background: var(--piece-color);
-  animation: confetti-pop 850ms cubic-bezier(.16, .72, .35, 1) both;
+  animation: confetti-pop 1250ms var(--piece-delay) both;
 }
 
 .confetti-burst span:nth-child(2n) { height: 9px; border-radius: 50%; }
 
+.confetti-burst span:nth-child(5n + 1) {
+  width: 17px;
+  height: 17px;
+  clip-path: polygon(50% 0, 63% 35%, 100% 38%, 71% 61%, 82% 100%, 50% 78%, 18% 100%, 29% 61%, 0 38%, 37% 35%);
+}
+
 @keyframes confetti-pop {
   0% { transform: scale(.3); opacity: 0; }
-  15% { opacity: 1; }
-  75% { opacity: 1; }
-  100% { transform: translate(var(--piece-x), var(--piece-y)) rotate(var(--piece-spin)); opacity: 0; }
+  12%, 70% { opacity: 1; }
+  42% {
+    transform: translate(var(--piece-x), calc(var(--piece-y) - 20px)) rotate(calc(var(--piece-spin) * .5));
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translate(calc(var(--piece-x) * 1.16), calc(var(--piece-y) + 70px)) rotate(var(--piece-spin));
+    opacity: 0;
+  }
 }
 
 @keyframes balloon-bob {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px) rotate(2deg); }
+  30% { transform: translateY(-17px) rotate(7deg); }
+  65% { transform: translateY(-6px) rotate(-5deg); }
+}
+
+@keyframes portrait-arrive {
+  from { transform: translateY(8px) rotate(-3deg) scale(.95); opacity: .85; }
+  to { transform: none; opacity: 1; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .card-art { animation: balloon-bob 1.8s ease-in-out 2; }
+  .card-portrait { animation: portrait-arrive 650ms ease-out both; }
+  .card-art { animation: balloon-bob 2.1s ease-in-out 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {

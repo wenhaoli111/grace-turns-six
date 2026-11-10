@@ -32,24 +32,41 @@ const party = Object.freeze({
   }
 })();
 
-const confettiButton = document.querySelector(".confetti-button");
+const invitationCard = document.querySelector(".invitation-card");
 const confettiBurst = document.querySelector(".confetti-burst");
-const confettiColors = ["#ad86c2", "#e58b83", "#e9bd53", "#78ad96", "#8da6d2"];
+const confettiColors = ["#a569c2", "#e47480", "#e9b63e", "#5a9f87", "#6c93d1"];
+const confettiCount = 28;
+let lastBurst = -Infinity;
 let clearConfetti;
 
-confettiButton.hidden = false;
-confettiButton.addEventListener("click", () => {
-  clearTimeout(clearConfetti);
-  const pieces = Array.from({ length: 20 }, (_, index) => {
+function popConfetti(event) {
+  const now = performance.now();
+  if (now - lastBurst < 1500) return;
+  lastBurst = now;
+
+  const card = invitationCard.getBoundingClientRect();
+  confettiBurst.style.left = `${event.clientX - card.left}px`;
+  confettiBurst.style.top = `${event.clientY - card.top}px`;
+
+  const pieces = Array.from({ length: confettiCount }, (_, index) => {
     const piece = document.createElement("span");
-    const angle = index * Math.PI / 10;
-    const distance = index % 2 ? 6.2 : 9.2;
+    const angle = index * 2 * Math.PI / confettiCount;
+    const distance = 5.5 + (index % 3) * 2.2;
     piece.style.setProperty("--piece-color", confettiColors[index % confettiColors.length]);
     piece.style.setProperty("--piece-x", `${Math.cos(angle) * distance}rem`);
     piece.style.setProperty("--piece-y", `${Math.sin(angle) * distance}rem`);
     piece.style.setProperty("--piece-spin", `${90 + index * 24}deg`);
+    piece.style.setProperty("--piece-delay", `${(index % 5) * 24}ms`);
     return piece;
   });
+  clearTimeout(clearConfetti);
   confettiBurst.replaceChildren(...pieces);
-  clearConfetti = setTimeout(() => confettiBurst.replaceChildren(), 900);
+  clearConfetti = setTimeout(() => confettiBurst.replaceChildren(), 1420);
+}
+
+invitationCard.addEventListener("pointermove", (event) => {
+  if (event.pointerType !== "touch") popConfetti(event);
+});
+invitationCard.addEventListener("pointerup", (event) => {
+  if (event.pointerType === "touch") popConfetti(event);
 });
