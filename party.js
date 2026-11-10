@@ -70,3 +70,29 @@ invitationCard.addEventListener("pointermove", (event) => {
 invitationCard.addEventListener("pointerup", (event) => {
   if (event.pointerType === "touch") popConfetti(event);
 });
+
+const photoViewer = document.querySelector(".photo-viewer");
+if (photoViewer && typeof photoViewer.showModal === "function") {
+  let lastPhoto;
+  document.querySelectorAll("[data-photo]").forEach(photo => {
+    photo.addEventListener("click", event => {
+      event.preventDefault();
+      lastPhoto = photo;
+      const source = photo.querySelector("img");
+      photoViewer.querySelector(".photo-full").src = photo.href;
+      photoViewer.querySelector(".photo-full").alt = source.alt;
+      photoViewer.querySelector(".photo-caption").textContent = photo.dataset.caption || "";
+      photoViewer.showModal();
+      document.body.classList.add("photo-is-open");
+    });
+  });
+  photoViewer.querySelector(".photo-close").addEventListener("click", () => photoViewer.close());
+  photoViewer.addEventListener("click", event => {
+    const box = photoViewer.getBoundingClientRect();
+    if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) photoViewer.close();
+  });
+  photoViewer.addEventListener("close", () => {
+    document.body.classList.remove("photo-is-open");
+    lastPhoto?.focus({preventScroll:true});
+  });
+}

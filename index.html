@@ -8,8 +8,8 @@
   <meta name="description" content="You’re invited to Grace’s sixth birthday! Sunday, December 6, 2026, 9:30 am–noon at Scooter’s Jungle South Bay, an indoor playground in El Segundo.">
   <title>Grace’s 6th Birthday · December 6, 2026</title>
   <link rel="icon" href="./assets/star.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=party-motion">
-  <script src="./party.js?v=party-motion" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=birthday-card">
+  <script src="./party.js?v=birthday-card" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to invitation</a>
@@ -28,7 +28,7 @@
   </header>
 
   <main id="main" class="wrap">
-    <section class="invitation-layout" id="details" aria-labelledby="event-title">
+    <section class="invitation-layout" aria-label="A birthday card for Grace">
       <div class="invitation-stage">
         <div class="invitation-card" aria-label="Grace is turning six. You’re invited to celebrate on Sunday, December 6.">
           <div class="card-corner corner-one" aria-hidden="true">✦</div><div class="card-corner corner-two" aria-hidden="true">✦</div>
@@ -46,6 +46,22 @@
         <span class="stage-confetti confetti-one" aria-hidden="true">✳</span><span class="stage-confetti confetti-two" aria-hidden="true">✦</span>
       </div>
 
+
+      <div class="snapshot-cluster" aria-label="A few family memories">
+        <a class="snapshot" href="./assets/family-selfie.webp" data-photo data-caption="A little sparkle, a lot of love">
+          <img src="./assets/family-selfie.webp" alt="Grace in her starry dress, smiling with Mom and Dad" width="1152" height="1536">
+          <span>A little sparkle ✦</span>
+        </a>
+        <a class="snapshot" href="./assets/family-boat.webp" data-photo data-caption="Family adventures with Grace and her little brother">
+          <img src="./assets/family-boat.webp" alt="Grace, her little brother, Mom and Dad together on a boat" width="1024" height="1536">
+          <span>Our little crew ♡</span>
+        </a>
+      </div>
+      <p class="photo-hint">Little moments, big smiles. Tap a photo to take a peek.</p>
+      <a class="open-card" href="#details">You’re invited <span aria-hidden="true">↓</span><small>Scroll to open your invitation</small></a>
+    </section>
+    <section class="inside-card" id="details" aria-labelledby="event-title">
+      <p class="inside-intro">Something wonderful is inside…</p>
       <div class="event-summary">
         <p class="eyebrow">YOU’RE INVITED <span aria-hidden="true">·</span> INDOOR PLAYGROUND PARTY</p>
         <h1 id="event-title">Grace’s 6th<br> Birthday</h1>
@@ -78,9 +94,7 @@
           <details><summary>Is the party indoors?<span aria-hidden="true">+</span></summary><p>Yes! We’re celebrating at Scooter’s Jungle South Bay, an indoor playground in El Segundo.</p></details>
           <details><summary>What should I include in our RSVP?<span aria-hidden="true">+</span></summary><p>Please reply for your family and include the names of the children attending, plus separate child and adult counts. Guest responses won’t be displayed on this website.</p></details>
         </section>
-        <img id="lego-photo" class="party-photo" src="./assets/grace-lego-car.webp"
-             alt="Grace sitting beside a yellow LEGO character in a colorful brick-built car"
-             width="1000" height="805" loading="lazy" decoding="async">
+
       </div>
 
       <section class="rsvp-panel" id="rsvp" aria-labelledby="rsvp-title">
@@ -104,7 +118,18 @@
         <noscript><p class="noscript-note">Please enable JavaScript to access the RSVP form.</p></noscript>
       </section>
     </div>
+    <section class="closing-memories" aria-labelledby="closing-title">
+      <p class="eyebrow">SIX YEARS OF LITTLE ADVENTURES</p>
+      <h2 id="closing-title">The next one is with you.</h2>
+      <a href="./assets/grace-lego-car.webp" class="closing-photo" data-photo data-caption="Ready for another birthday adventure!"><img src="./assets/grace-lego-car.webp" alt="Grace beside a yellow LEGO character in a colorful brick-built car" width="1000" height="805" loading="lazy"></a>
+      <p>Can’t wait to celebrate with you! ♡</p>
+    </section>
   </main>
+  <dialog class="photo-viewer" aria-label="Family photo">
+    <button class="photo-close" type="button" aria-label="Close photo">×</button>
+    <img class="photo-full" alt="">
+    <p class="photo-caption"></p>
+  </dialog>
   <footer class="footer wrap"><a href="#main" class="footer-brand">Grace is six <span aria-hidden="true">✳</span></a><p>December 6, 2026 <span aria-hidden="true">·</span> Made with love</p></footer>
   <div class="mobile-rsvp"><span>Grace’s 6th Birthday<small>Sunday, December 6</small></span><a class="button button-primary" href="#rsvp">RSVP</a></div>
 </body>

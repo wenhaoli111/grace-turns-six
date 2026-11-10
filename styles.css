@@ -99,3 +99,61 @@
     transform: translate(calc(var(--piece-x) * .7), calc(var(--piece-y) * .7)) rotate(var(--piece-spin));
   }
 }
+
+/* The cover unfolds into the invitation, on screens of every size. */
+.invitation-layout{display:flex;flex-direction:column;gap:0;padding:36px 0 42px;max-width:800px;margin:auto}
+.invitation-stage{order:0;width:min(100%,590px);padding:28px 46px;background:radial-gradient(ellipse at 20% 10%,#f5eff8,#eae1f0);border-radius:24px}
+.invitation-card{padding:22px 28px 26px;transform:rotate(-1.5deg)}
+.card-name{font-size:clamp(60px,10vw,82px)}
+.card-picture{width:min(100%,290px)}
+.card-art{width:30%;right:-16px}
+.card-portrait{border-width:7px}
+.snapshot-cluster{position:relative;z-index:2;display:flex;justify-content:center;gap:26px;margin:-12px auto 0;max-width:430px;padding:0 12px}
+.snapshot{display:block;width:170px;min-width:0;padding:9px 9px 13px;background:#fff;border:1px solid #ece3dc;box-shadow:0 9px 24px #4a2f5e24;text-decoration:none;transform:rotate(-7deg);transition:transform .2s}
+.snapshot:nth-child(2){transform:rotate(7deg);margin-top:14px}
+.snapshot:hover,.snapshot:focus-visible{transform:rotate(0) translateY(-4px)}
+.snapshot img{width:100%;aspect-ratio:1 / 1.08;object-fit:cover;object-position:50% 63%}
+.snapshot:nth-child(2) img{object-position:50% 70%}
+.snapshot span{display:block;text-align:center;font-family:var(--serif);font-style:italic;font-size:14px;margin-top:9px;color:var(--purple)}
+.photo-hint{font-size:11px;color:var(--muted);text-align:center;margin:26px 0 14px}
+.open-card{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--purple);font-family:var(--serif);font-size:23px;padding:10px 22px;min-height:48px}
+.open-card span{font-family:var(--sans);font-size:25px}
+.open-card small{font:10px var(--sans);letter-spacing:1px;margin-top:4px}
+.inside-card{max-width:720px;margin:0 auto 46px;padding:38px 44px 42px;background:#fffdf9;border:1px solid #e5d8e9;border-radius:16px;box-shadow:0 10px 40px #4a2f5e09;scroll-margin-top:24px}
+.inside-intro{text-align:center;font:italic 18px var(--serif);color:var(--purple);margin:0 0 30px}
+.event-summary{order:initial}
+.event-summary h1{text-align:center;font-size:clamp(36px,7vw,52px)}
+.event-summary h1 br{display:none}
+.event-summary>.eyebrow,.host-line{text-align:center}
+.event-description{max-width:none;text-align:center}
+.event-facts{max-width:430px;margin:28px auto}
+.summary-rsvp{display:flex;max-width:430px;margin:auto}
+.summary-note{max-width:none}
+.closing-memories{text-align:center;max-width:520px;margin:12px auto 60px}
+.closing-memories h2{font:400 34px/1.2 var(--serif);margin:12px 0 24px}
+.closing-photo{display:block;padding:10px;background:white;box-shadow:0 8px 30px #4a2f5e18;transform:rotate(-2deg);border:1px solid var(--line)}
+.closing-photo img{width:100%;height:auto}
+.closing-memories>p:last-child{font:italic 20px var(--serif);color:var(--purple);margin-top:30px}
+.photo-viewer{border:0;padding:48px 18px 18px;background:#fffdf9;border-radius:14px;width:max-content;max-width:calc(100vw - 24px);max-height:calc(100dvh - 32px);overflow:auto;box-shadow:0 20px 80px #0005}
+.photo-viewer::backdrop{background:#21172bdf}
+.photo-full{max-width:100%;max-height:calc(100dvh - 155px);width:auto;height:auto;object-fit:contain;margin:auto}
+.photo-close{position:absolute;top:5px;right:6px;border:0;background:transparent;color:var(--purple);font-size:32px;width:44px;height:44px;cursor:pointer}
+.photo-caption{font:italic 16px/1.4 var(--serif);text-align:center;color:var(--purple);margin:14px 0 0}
+body.photo-is-open{overflow:hidden}
+button:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+@media(max-width:640px){
+ .invitation-layout{padding:24px 0 32px}
+ .invitation-stage{order:0;padding:20px 26px;max-width:450px;border-radius:18px}
+ .invitation-card{padding:20px 18px 23px}
+ .card-picture{width:min(100%,250px)}
+ .card-name{font-size:64px}
+ .snapshot-cluster{gap:18px;max-width:350px;margin-top:-7px}
+ .snapshot{width:145px;padding:7px 7px 10px}
+ .snapshot span{font-size:12px}
+ .photo-hint{font-size:10px;max-width:260px}
+ .inside-card{padding:28px 21px 30px;margin-bottom:32px}
+ .inside-intro{font-size:16px;margin-bottom:25px}
+ .closing-memories{padding:0 10px;margin-bottom:45px}
+ .closing-memories h2{font-size:29px}
+}
+@media(prefers-reduced-motion:reduce){.snapshot{transition:none}}
