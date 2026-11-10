@@ -112,7 +112,7 @@
 .snapshot{display:block;width:170px;min-width:0;padding:9px 9px 13px;background:#fff;border:1px solid #ece3dc;box-shadow:0 9px 24px #4a2f5e24;text-decoration:none;transform:rotate(-7deg);transition:transform .2s}
 .snapshot:nth-child(2){transform:rotate(7deg);margin-top:14px}
 .snapshot:hover,.snapshot:focus-visible{transform:rotate(0) translateY(-4px)}
-.snapshot img{width:100%;aspect-ratio:1 / 1.08;object-fit:cover;object-position:50% 63%}
+.snapshot img{width:100%;height:auto;aspect-ratio:1 / 1.08;object-fit:cover;object-position:50% 63%}
 .snapshot:nth-child(2) img{object-position:50% 70%}
 .snapshot span{display:block;text-align:center;font-family:var(--serif);font-style:italic;font-size:14px;margin-top:9px;color:var(--purple)}
 .photo-hint{font-size:11px;color:var(--muted);text-align:center;margin:26px 0 14px}
@@ -189,3 +189,8 @@ body.motion-paused .floating-stars span,body.motion-paused .stage-confetti,body.
  .floating-stars span,.stage-confetti,.open-card>span,.card-art,.card-portrait{animation:none!important}
  .confetti-burst{display:none}
 }
+
+/* Keep tilted snapshots inside the page at narrow widths. */
+.snapshot-cluster{width:min(100%,430px);min-width:0;align-items:flex-start}
+.snapshot{flex-shrink:1}
+@media(max-width:640px){.snapshot-cluster{width:min(100%,350px);padding:0 18px;gap:14px}}
