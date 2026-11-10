@@ -40,6 +40,7 @@ let lastBurst = -Infinity;
 let clearConfetti;
 
 function popConfetti(event) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const now = performance.now();
   if (now - lastBurst < 1500) return;
   lastBurst = now;
@@ -96,3 +97,37 @@ if (photoViewer && typeof photoViewer.showModal === "function") {
     lastPhoto?.focus({preventScroll:true});
   });
 }
+
+/* Content stays visible without JavaScript or scroll-animation support. */
+(() => {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const animations = new Set();
+  let observer;
+  const targets = document.querySelectorAll(".snapshot-cluster, .inside-card, .information-section, .rsvp-panel, .closing-memories");
+  function configureReveals() {
+    observer?.disconnect();
+    animations.forEach(animation => animation.cancel());
+    animations.clear();
+    if (reducedMotion.matches || !("IntersectionObserver" in window) || !Element.prototype.animate) return;
+    observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        const animation = entry.target.animate([
+          {opacity:0.25, transform:"translateY(20px)"},
+          {opacity:1, transform:"translateY(0)"}
+        ], {duration:650, easing:"cubic-bezier(.2,.65,.3,1)"});
+        animations.add(animation);
+        animation.finished.then(() => animations.delete(animation), () => animations.delete(animation));
+      });
+    }, {threshold:0.08});
+    targets.forEach(target => observer.observe(target));
+  }
+  configureReveals();
+  reducedMotion.addEventListener?.("change", configureReveals);
+  function pauseWhenHidden() {
+    document.body.classList.toggle("motion-paused", document.hidden);
+  }
+  document.addEventListener("visibilitychange", pauseWhenHidden);
+  pauseWhenHidden();
+})();

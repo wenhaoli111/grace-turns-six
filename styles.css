@@ -157,3 +157,35 @@ button:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
  .closing-memories h2{font-size:29px}
 }
 @media(prefers-reduced-motion:reduce){.snapshot{transition:none}}
+
+/* Birthday sparkle: light motion around the portrait, never over her face. */
+.floating-stars{position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden}
+.floating-stars span{position:absolute;color:#ab86bf;font-size:23px;line-height:1}
+.floating-stars span:nth-child(1){left:13px;top:19%;--star-tilt:-12deg}
+.floating-stars span:nth-child(2){right:14px;top:40%;font-size:29px;color:#c48e68;--star-tilt:14deg}
+.floating-stars span:nth-child(3){left:14px;top:68%;font-size:17px;color:#c48e68;--star-tilt:8deg}
+.floating-stars span:nth-child(4){right:15px;top:82%;font-size:19px;--star-tilt:-10deg}
+@keyframes star-drift{
+  0%,100%{transform:translateY(0) rotate(0);opacity:.55}
+  50%{transform:translateY(-13px) rotate(var(--star-tilt));opacity:1}
+}
+@keyframes invitation-bounce{
+  0%,65%,100%{transform:translateY(0)}
+  78%{transform:translateY(5px)}
+  89%{transform:translateY(1px)}
+}
+@media(prefers-reduced-motion:no-preference){
+ .floating-stars span{animation:star-drift 5s ease-in-out infinite}
+ .floating-stars span:nth-child(2){animation-delay:-1.7s;animation-duration:6s}
+ .floating-stars span:nth-child(3){animation-delay:-3s;animation-duration:5.6s}
+ .floating-stars span:nth-child(4){animation-delay:-.8s;animation-duration:6.3s}
+ .confetti-one{animation:star-drift 6s ease-in-out infinite;--star-tilt:12deg}
+ .confetti-two{animation:star-drift 5s ease-in-out -2s infinite;--star-tilt:-8deg}
+ .open-card>span{animation:invitation-bounce 2.6s ease-in-out infinite}
+ .card-art{animation:balloon-bob 4.5s ease-in-out infinite}
+}
+body.motion-paused .floating-stars span,body.motion-paused .stage-confetti,body.motion-paused .open-card>span,body.motion-paused .card-art{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){
+ .floating-stars span,.stage-confetti,.open-card>span,.card-art,.card-portrait{animation:none!important}
+ .confetti-burst{display:none}
+}
