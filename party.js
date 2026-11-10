@@ -31,3 +31,25 @@ const party = Object.freeze({
     deadline.hidden = false;
   }
 })();
+
+const confettiButton = document.querySelector(".confetti-button");
+const confettiBurst = document.querySelector(".confetti-burst");
+const confettiColors = ["#ad86c2", "#e58b83", "#e9bd53", "#78ad96", "#8da6d2"];
+let clearConfetti;
+
+confettiButton.hidden = false;
+confettiButton.addEventListener("click", () => {
+  clearTimeout(clearConfetti);
+  const pieces = Array.from({ length: 20 }, (_, index) => {
+    const piece = document.createElement("span");
+    const angle = index * Math.PI / 10;
+    const distance = index % 2 ? 6.2 : 9.2;
+    piece.style.setProperty("--piece-color", confettiColors[index % confettiColors.length]);
+    piece.style.setProperty("--piece-x", `${Math.cos(angle) * distance}rem`);
+    piece.style.setProperty("--piece-y", `${Math.sin(angle) * distance}rem`);
+    piece.style.setProperty("--piece-spin", `${90 + index * 24}deg`);
+    return piece;
+  });
+  confettiBurst.replaceChildren(...pieces);
+  clearConfetti = setTimeout(() => confettiBurst.replaceChildren(), 900);
+});
