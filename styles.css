@@ -251,6 +251,25 @@ body.motion-paused .balloon-bouquet,body.motion-paused .floating-stars span,body
 .snapshot{flex-shrink:1}
 @media(max-width:640px){.snapshot-cluster{width:min(100%,350px);padding:0 18px;gap:14px}}
 
+.event-description,
+.event-fact h2,
+.summary-rsvp,
+.information-section > p:not(.eyebrow),
+.timeline h3,
+.good-to-know summary {
+  font-size: 1rem;
+}
+
+.event-fact p,
+.event-fact .timezone,
+.event-fact .text-link,
+.summary-note,
+.timeline time,
+.timeline p,
+.good-to-know details p {
+  font-size: .9375rem;
+}
+
 .rsvp-panel {
   min-width: 0;
   padding: 26px 20px;
@@ -258,18 +277,22 @@ body.motion-paused .balloon-bouquet,body.motion-paused .floating-stars span,body
 
 .rsvp-panel.has-embed { padding: 26px 12px 12px; }
 .rsvp-panel.has-embed .rsvp-heading { padding: 0 12px; }
-.rsvp-heading > p:last-child { margin-bottom: 16px; }
+.rsvp-heading > p:last-child {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
 
 .rsvp-panel #rsvp-link {
   width: auto;
   min-height: 44px;
   margin: 0 0 12px;
+  font-size: 1rem;
 }
 
 .rsvp-panel.has-embed #rsvp-link { margin-left: 12px; }
 .rsvp-panel .privacy-note {
   justify-content: flex-start;
-  font-size: 12px;
+  font-size: .9375rem;
   margin: 0 0 14px;
 }
 .rsvp-panel.has-embed .privacy-note { margin-left: 12px; }
@@ -287,6 +310,10 @@ body.motion-paused .balloon-bouquet,body.motion-paused .floating-stars span,body
 }
 
 @media (max-width: 640px) {
+  .timeline li { grid-template-columns: max-content minmax(0, 1fr); }
+  .mobile-rsvp > span { font-size: .9375rem; }
+  .mobile-rsvp small { font-size: .875rem; }
+  .mobile-rsvp .button { font-size: 1rem; min-height: 44px; }
   .rsvp-panel iframe:not([hidden]) { display: none; }
   .rsvp-panel #rsvp-link {
     display: flex;
