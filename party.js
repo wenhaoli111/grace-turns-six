@@ -1,29 +1,26 @@
-const party = Object.freeze({
-  rsvpDeadline: ""
-});
-
 (() => {
   const url = new URL(document.getElementById("rsvp-link").href);
   const longForm = url.protocol === "https:" && url.hostname === "docs.google.com" &&
     /^\/forms\/(?:u\/\d+\/)?d\/(?:e\/)?[^/]+\/viewform\/?$/.test(url.pathname);
-  if (longForm) {
-    const embed = document.getElementById("rsvp-embed");
-    const wideScreen = window.matchMedia("(min-width: 641px)");
-    const loadEmbed = () => {
-      if (!wideScreen.matches || !embed.hidden) return;
-      url.searchParams.set("embedded", "true");
-      embed.src = url.href;
-      embed.hidden = false;
-      document.getElementById("rsvp").classList.add("has-embed");
-    };
-    loadEmbed();
-    wideScreen.addEventListener("change", loadEmbed);
+  if (!longForm) return;
+
+  const rsvpPanel = document.getElementById("rsvp");
+  const wideScreen = window.matchMedia("(min-width: 641px)");
+  function loadEmbed() {
+    if (location.hash !== "#rsvp" || !wideScreen.matches || rsvpPanel.classList.contains("has-embed")) return;
+
+    url.searchParams.set("embedded", "true");
+    const embed = document.createElement("iframe");
+    embed.id = "rsvp-embed";
+    embed.title = "RSVP for Grace’s sixth birthday";
+    embed.referrerPolicy = "strict-origin-when-cross-origin";
+    embed.src = url.href;
+    rsvpPanel.append(embed);
+    rsvpPanel.classList.add("has-embed");
   }
-  if (party.rsvpDeadline) {
-    const deadline = document.getElementById("rsvp-deadline");
-    deadline.textContent = `Please RSVP by ${party.rsvpDeadline}.`;
-    deadline.hidden = false;
-  }
+  loadEmbed();
+  window.addEventListener("hashchange", loadEmbed);
+  wideScreen.addEventListener("change", loadEmbed);
 })();
 
 const invitationCard = document.querySelector(".invitation-card");
@@ -68,15 +65,19 @@ invitationCard.addEventListener("pointerup", (event) => {
 
 const photoViewer = document.querySelector(".photo-viewer");
 if (photoViewer && typeof photoViewer.showModal === "function") {
+  const fullPhoto = document.createElement("img");
+  fullPhoto.className = "photo-full";
+  const caption = photoViewer.querySelector(".photo-caption");
   let lastPhoto;
   document.querySelectorAll("[data-photo]").forEach(photo => {
     photo.addEventListener("click", event => {
       event.preventDefault();
       lastPhoto = photo;
       const source = photo.querySelector("img");
-      photoViewer.querySelector(".photo-full").src = photo.href;
-      photoViewer.querySelector(".photo-full").alt = source.alt;
-      photoViewer.querySelector(".photo-caption").textContent = photo.dataset.caption || "";
+      fullPhoto.alt = source.alt;
+      fullPhoto.src = photo.href;
+      caption.before(fullPhoto);
+      caption.textContent = photo.dataset.caption || "";
       photoViewer.showModal();
       document.body.classList.add("photo-is-open");
     });

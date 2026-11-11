@@ -16,8 +16,8 @@
   <meta property="og:image:height" content="880">
   <meta property="og:image:alt" content="Grace’s portrait beside a bouquet of colorful balloons with a purple number six balloon">
   <link rel="icon" href="./assets/star.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=readable-details">
-  <script src="./party.js?v=clearer-rsvp" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=phone-invitation">
+  <script src="./party.js?v=rsvp-on-request" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to invitation</a>
@@ -56,8 +56,7 @@
         </div>
         <span class="stage-confetti confetti-two" aria-hidden="true">✦</span>
       </div>
-
-
+      <a class="open-card" href="#details">Party details <span aria-hidden="true">↓</span></a>
       <div class="snapshot-cluster" aria-label="A few family memories">
         <a class="snapshot" href="./assets/grace-and-brother.webp" data-photo data-caption="Grace and her little brother in a LEGO car">
           <img src="./assets/grace-and-brother.webp" alt="Grace and her little brother in a colorful LEGO car" width="960" height="1156">
@@ -69,7 +68,6 @@
         </a>
       </div>
       <p class="photo-hint">Little moments, big smiles. Tap a photo to take a peek.</p>
-      <a class="open-card" href="#details">You’re invited <span aria-hidden="true">↓</span><small>Scroll to open your invitation</small></a>
     </section>
     <section class="inside-card" id="details" aria-labelledby="event-title">
       <p class="inside-intro">Something wonderful is inside…</p>
@@ -112,11 +110,10 @@
           <h2 id="rsvp-title">RSVP for Grace’s birthday</h2>
           <p>If your invited child is coming, please send one RSVP per family. If you can’t make it, please reply to your invitation.</p>
         </div>
-        <p id="rsvp-deadline" class="deadline" hidden></p>
+        <p class="deadline">Please RSVP by <time datetime="2026-11-22">Sunday, November 22</time>.</p>
         <a id="rsvp-link" class="button button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxkF4VDI06OLsoHkxnw91wHGtMckd2jhyaUD6hGIKeWH8epQ/viewform"
            target="_blank" rel="noopener noreferrer">Open RSVP form <svg aria-hidden="true"><use href="#arrow-icon"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
         <p class="privacy-note"><svg aria-hidden="true"><use href="#lock-icon"/></svg><span>Only Grace’s family can see your reply.</span></p>
-        <iframe id="rsvp-embed" title="RSVP for Grace’s sixth birthday" hidden loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </section>
     </div>
     <section class="closing-memories" aria-labelledby="closing-title">
@@ -126,10 +123,9 @@
   </main>
   <dialog class="photo-viewer" aria-label="Family photo">
     <button class="photo-close" type="button" aria-label="Close photo">×</button>
-    <img class="photo-full" alt="">
     <p class="photo-caption"></p>
   </dialog>
-  <footer class="footer wrap"><a href="#main" class="footer-brand">Grace is six</a><p>December 6, 2026 <span aria-hidden="true">·</span> Made with love</p></footer>
+  <footer class="footer wrap"><a href="#main" class="footer-brand">Grace is six</a><p><time datetime="2026-12-06">December 6, 2026</time> <span class="footer-separator" aria-hidden="true">·</span> <span class="footer-credit">Made with love</span></p></footer>
   <div class="mobile-rsvp"><span>Grace’s 6th Birthday<small>Sunday, December 6</small></span><a class="button button-primary" href="#rsvp">RSVP</a></div>
 </body>
 </html>
