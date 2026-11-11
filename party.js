@@ -6,17 +6,17 @@
 
   const rsvpPanel = document.getElementById("rsvp");
   const wideScreen = window.matchMedia("(min-width: 641px)");
-  let embed;
   function loadEmbed() {
-    if (location.hash !== "#rsvp" || !wideScreen.matches || embed) return;
+    if (location.hash !== "#rsvp" || !wideScreen.matches || rsvpPanel.classList.contains("has-embed")) return;
 
     url.searchParams.set("embedded", "true");
-    embed = document.createElement("iframe");
+    const embed = document.createElement("iframe");
     embed.id = "rsvp-embed";
     embed.title = "RSVP for Grace’s sixth birthday";
     embed.referrerPolicy = "strict-origin-when-cross-origin";
     embed.src = url.href;
-    rsvpPanel.parentElement.append(embed);
+    rsvpPanel.append(embed);
+    rsvpPanel.classList.add("has-embed");
   }
   loadEmbed();
   window.addEventListener("hashchange", loadEmbed);

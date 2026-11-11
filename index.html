@@ -16,8 +16,8 @@
   <meta property="og:image:height" content="880">
   <meta property="og:image:alt" content="Grace’s portrait beside a bouquet of colorful balloons with a purple number six balloon">
   <link rel="icon" href="./assets/star.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=responsive-layout">
-  <script src="./party.js?v=responsive-rsvp" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=phone-invitation">
+  <script src="./party.js?v=rsvp-on-request" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to invitation</a>
@@ -36,70 +36,74 @@
   </header>
 
   <main id="main" class="wrap">
-    <div class="invitation-overview">
-      <section class="invitation-layout" aria-label="A birthday card for Grace">
-        <div class="invitation-stage">
-          <div class="floating-stars" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span><span>✧</span></div>
-          <div class="balloon-bouquet" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span><span></span><span>6</span>
-          </div>
-          <div class="invitation-card" aria-label="Grace is turning six. You’re invited to celebrate on Sunday, December 6.">
-            <div class="card-corner corner-one" aria-hidden="true">✦</div><div class="card-corner corner-two" aria-hidden="true">✦</div>
-            <p class="card-intro">A little party for a big birthday</p>
-            <p class="card-name">Grace</p>
-            <p class="card-age">IS TURNING SIX!</p>
-            <div class="card-picture">
-              <img class="card-portrait" src="./assets/grace-portrait.webp" alt="Grace wearing a pearl headpiece and a star-patterned dress" width="800" height="1000">
-            </div>
-            <p class="card-tagline">Let’s jump for joy.</p>
-            <div class="confetti-burst" aria-hidden="true"></div>
-            <div class="card-date"><span>SUNDAY</span><strong>DECEMBER 6</strong><span>9:30 AM–NOON · 2026</span></div>
-          </div>
-          <span class="stage-confetti confetti-two" aria-hidden="true">✦</span>
+    <section class="invitation-layout" aria-label="A birthday card for Grace">
+      <div class="invitation-stage">
+        <div class="floating-stars" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span><span>✧</span></div>
+        <div class="balloon-bouquet" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span>6</span>
         </div>
-        <a class="open-card" href="#details">Party details <span aria-hidden="true">↓</span></a>
-      </section>
-      <section class="inside-card" id="details" aria-labelledby="event-title">
-        <p class="inside-intro">Something wonderful is inside…</p>
-        <div class="event-summary">
-          <p class="eyebrow">YOU’RE INVITED <span aria-hidden="true">·</span> INDOOR PLAYGROUND PARTY</p>
-          <h1 id="event-title">Grace’s 6th<br> Birthday</h1>
-          <p class="host-line">Hosted by Grace’s family</p>
-          <p class="event-description">Join us for a morning of jumping, playing, and celebrating Grace at Scooter’s Jungle!</p>
-          <div class="event-facts">
-            <div class="event-fact"><div class="fact-icon"><svg aria-hidden="true"><use href="#calendar-icon"/></svg></div><div><h2>Sunday, December 6, 2026</h2><p>9:30 am–12:00 pm <span class="timezone">Pacific Time</span></p><a class="text-link" href="./grace-birthday.ics" download>Add to calendar <span aria-hidden="true">↗</span></a></div></div>
-            <div class="event-fact"><div class="fact-icon"><svg aria-hidden="true"><use href="#pin-icon"/></svg></div><div><h2>Scooter’s Jungle South Bay</h2><p>606 Hawaii Street<br>El Segundo, CA 90245</p><a class="text-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Scooter%27s%20Jungle%20South%20Bay%2C%20606%20Hawaii%20Street%2C%20El%20Segundo%2C%20CA%2090245" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></div>
+        <div class="invitation-card" aria-label="Grace is turning six. You’re invited to celebrate on Sunday, December 6.">
+          <div class="card-corner corner-one" aria-hidden="true">✦</div><div class="card-corner corner-two" aria-hidden="true">✦</div>
+          <p class="card-intro">A little party for a big birthday</p>
+          <p class="card-name">Grace</p>
+          <p class="card-age">IS TURNING SIX!</p>
+          <div class="card-picture">
+            <img class="card-portrait" src="./assets/grace-portrait.webp" alt="Grace wearing a pearl headpiece and a star-patterned dress" width="800" height="1000">
           </div>
-          <a class="button button-primary summary-rsvp" href="#rsvp">RSVP for your family <svg aria-hidden="true"><use href="#arrow-icon"/></svg></a>
-          <p class="summary-note">Please arrive no earlier than 9:25 am.</p>
+          <p class="card-tagline">Let’s jump for joy.</p>
+          <div class="confetti-burst" aria-hidden="true"></div>
+          <div class="card-date"><span>SUNDAY</span><strong>DECEMBER 6</strong><span>9:30 AM–NOON · 2026</span></div>
         </div>
-      </section>
-      <div class="invitation-photos">
-        <div class="snapshot-cluster" aria-label="A few family memories">
-          <a class="snapshot" href="./assets/grace-and-brother.webp" data-photo data-caption="Grace and her little brother in a LEGO car">
-            <img src="./assets/grace-and-brother.webp" alt="Grace and her little brother in a colorful LEGO car" width="960" height="1156">
-            <span>Grace and her little brother</span>
-          </a>
-          <a class="snapshot" href="./assets/family-halloween.webp" data-photo data-caption="Halloween with Mom, Dad, and both grandparents">
-            <img src="./assets/family-halloween.webp" alt="Grace and her little brother with their parents and grandparents in Halloween costumes" width="1000" height="1020">
-            <span>Halloween with the whole family</span>
-          </a>
-        </div>
-        <p class="photo-hint">Select a photo to enlarge it.</p>
+        <span class="stage-confetti confetti-two" aria-hidden="true">✦</span>
       </div>
-    </div>
+      <a class="open-card" href="#details">Party details <span aria-hidden="true">↓</span></a>
+      <div class="snapshot-cluster" aria-label="A few family memories">
+        <a class="snapshot" href="./assets/grace-and-brother.webp" data-photo data-caption="Grace and her little brother in a LEGO car">
+          <img src="./assets/grace-and-brother.webp" alt="Grace and her little brother in a colorful LEGO car" width="960" height="1156">
+          <span>Grace and her little brother</span>
+        </a>
+        <a class="snapshot" href="./assets/family-halloween.webp" data-photo data-caption="Halloween with Mom, Dad, and both grandparents">
+          <img src="./assets/family-halloween.webp" alt="Grace and her little brother with their parents and grandparents in Halloween costumes" width="1000" height="1020">
+          <span>Halloween with the whole family</span>
+        </a>
+      </div>
+      <p class="photo-hint">Little moments, big smiles. Tap a photo to take a peek.</p>
+    </section>
+    <section class="inside-card" id="details" aria-labelledby="event-title">
+      <p class="inside-intro">Something wonderful is inside…</p>
+      <div class="event-summary">
+        <p class="eyebrow">YOU’RE INVITED <span aria-hidden="true">·</span> INDOOR PLAYGROUND PARTY</p>
+        <h1 id="event-title">Grace’s 6th<br> Birthday</h1>
+        <p class="host-line">Hosted by Grace’s family</p>
+        <p class="event-description">Join us for a morning of jumping, playing, and celebrating Grace at Scooter’s Jungle!</p>
+        <div class="event-facts">
+          <div class="event-fact"><div class="fact-icon"><svg aria-hidden="true"><use href="#calendar-icon"/></svg></div><div><h2>Sunday, December 6, 2026</h2><p>9:30 am–12:00 pm <span class="timezone">Pacific Time</span></p><a class="text-link" href="./grace-birthday.ics" download>Add to calendar <span aria-hidden="true">↗</span></a></div></div>
+          <div class="event-fact"><div class="fact-icon"><svg aria-hidden="true"><use href="#pin-icon"/></svg></div><div><h2>Scooter’s Jungle South Bay</h2><p>606 Hawaii Street<br>El Segundo, CA 90245</p><a class="text-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Scooter%27s%20Jungle%20South%20Bay%2C%20606%20Hawaii%20Street%2C%20El%20Segundo%2C%20CA%2090245" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></div>
+        </div>
+        <a class="button button-primary summary-rsvp" href="#rsvp">RSVP for your family <svg aria-hidden="true"><use href="#arrow-icon"/></svg></a>
+        <p class="summary-note">Please arrive no earlier than 9:25 am.</p>
+      </div>
+    </section>
 
     <div class="event-body">
-      <section class="information-section" id="schedule" aria-labelledby="schedule-title">
-        <p class="eyebrow">JUMP, PLAY, CELEBRATE</p>
-        <h2 id="schedule-title">A morning of birthday fun</h2>
-        <p>We’ll start with check-in, head into the play arena, then gather in the dining room to celebrate.</p>
-        <ol class="timeline">
-          <li><span class="timeline-dot" aria-hidden="true"></span><time>9:30 am</time><div><h3>Welcome &amp; check-in</h3><p>A quick safety talk before the fun begins.</p></div></li>
-          <li><span class="timeline-dot" aria-hidden="true"></span><time>9:45 am</time><div><h3>Let’s jump &amp; play</h3><p>Playtime in the Ultimate Arena until 11:15 am.</p></div></li>
-          <li><span class="timeline-dot" aria-hidden="true"></span><time>11:15 am</time><div><h3>Celebrate together</h3><p>Birthday time in the dining room. The party ends at noon.</p></div></li>
-        </ol>
-      </section>
+      <div class="event-information">
+        <section class="information-section" id="schedule" aria-labelledby="schedule-title">
+          <p class="eyebrow">JUMP, PLAY, CELEBRATE</p>
+          <h2 id="schedule-title">A morning of birthday fun</h2>
+          <p>We’ll start with check-in, head into the play arena, then gather in the dining room to celebrate.</p>
+          <ol class="timeline">
+            <li><span class="timeline-dot" aria-hidden="true"></span><time>9:30 am</time><div><h3>Welcome &amp; check-in</h3><p>A quick safety talk before the fun begins.</p></div></li>
+            <li><span class="timeline-dot" aria-hidden="true"></span><time>9:45 am</time><div><h3>Let’s jump &amp; play</h3><p>Playtime in the Ultimate Arena until 11:15 am.</p></div></li>
+            <li><span class="timeline-dot" aria-hidden="true"></span><time>11:15 am</time><div><h3>Celebrate together</h3><p>Birthday time in the dining room. The party ends at noon.</p></div></li>
+          </ol>
+        </section>
+        <section class="information-section good-to-know" aria-labelledby="notes-title">
+          <h2 id="notes-title">Good to know</h2>
+          <details><summary>When should we arrive?<span aria-hidden="true">+</span></summary><p>Check-in begins at 9:30 am. The venue asks guests to arrive no more than five minutes early, so please arrive at 9:25 am or later.</p></details>
+          <details><summary>Is the party indoors?<span aria-hidden="true">+</span></summary><p>Yes! We’re celebrating at Scooter’s Jungle South Bay, an indoor playground in El Segundo.</p></details>
+        </section>
+
+      </div>
 
       <section class="rsvp-panel" id="rsvp" aria-labelledby="rsvp-title">
         <div class="rsvp-heading">
@@ -110,12 +114,6 @@
         <a id="rsvp-link" class="button button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxkF4VDI06OLsoHkxnw91wHGtMckd2jhyaUD6hGIKeWH8epQ/viewform"
            target="_blank" rel="noopener noreferrer">Open RSVP form <svg aria-hidden="true"><use href="#arrow-icon"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
         <p class="privacy-note"><svg aria-hidden="true"><use href="#lock-icon"/></svg><span>Only Grace’s family can see your reply.</span></p>
-      </section>
-
-      <section class="information-section good-to-know" aria-labelledby="notes-title">
-        <h2 id="notes-title">Good to know</h2>
-        <details><summary>When should we arrive?<span aria-hidden="true">+</span></summary><p>Check-in begins at 9:30 am. The venue asks guests to arrive no more than five minutes early, so please arrive at 9:25 am or later.</p></details>
-        <details><summary>Is the party indoors?<span aria-hidden="true">+</span></summary><p>Yes! We’re celebrating at Scooter’s Jungle South Bay, an indoor playground in El Segundo.</p></details>
       </section>
     </div>
     <section class="closing-memories" aria-labelledby="closing-title">
