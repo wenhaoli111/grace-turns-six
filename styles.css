@@ -78,9 +78,10 @@
 }
 
 @keyframes balloon-bob {
-  0%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-17px) rotate(7deg); }
-  65% { transform: translateY(-6px) rotate(-5deg); }
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  28% { transform: translate(16px, -46px) rotate(9deg); }
+  52% { transform: translate(24px, -86px) rotate(-5deg); }
+  74% { transform: translate(13px, -62px) rotate(5deg); }
 }
 
 @keyframes portrait-arrive {
