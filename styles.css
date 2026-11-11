@@ -22,16 +22,6 @@
   box-shadow: 0 4px 14px #4a2f5e25;
 }
 
-.card-art {
-  position: absolute;
-  right: -12px;
-  bottom: -12px;
-  width: 38%;
-  height: auto;
-  margin: 0;
-  filter: drop-shadow(0 2px 3px #4a2f5e40);
-}
-
 .party-photo {
   width: 100%;
   height: auto;
@@ -79,9 +69,9 @@
 
 @keyframes balloon-bob {
   0%, 100% { transform: translate(0, 0) rotate(0); }
-  28% { transform: translate(16px, -46px) rotate(9deg); }
-  52% { transform: translate(24px, -86px) rotate(-5deg); }
-  74% { transform: translate(13px, -62px) rotate(5deg); }
+  28% { transform: translate(4px, calc(var(--rise) * .55)) rotate(5deg); }
+  52% { transform: translate(8px, var(--rise)) rotate(-5deg); }
+  74% { transform: translate(5px, calc(var(--rise) * .72)) rotate(4deg); }
 }
 
 @keyframes portrait-arrive {
@@ -91,7 +81,6 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .card-portrait { animation: portrait-arrive 650ms ease-out both; }
-  .card-art { animation: balloon-bob 2.1s ease-in-out 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -107,7 +96,6 @@
 .invitation-card{padding:22px 28px 26px;transform:rotate(-1.5deg)}
 .card-name{font-size:clamp(60px,10vw,82px)}
 .card-picture{width:min(100%,290px)}
-.card-art{width:30%;right:-16px}
 .card-portrait{border-width:7px}
 .snapshot-cluster{position:relative;z-index:2;display:flex;justify-content:center;gap:26px;margin:-12px auto 0;max-width:430px;padding:0 12px}
 .snapshot{display:block;width:170px;min-width:0;padding:9px 9px 13px;background:#fff;border:1px solid #ece3dc;box-shadow:0 9px 24px #4a2f5e24;text-decoration:none;transform:rotate(-7deg);transition:transform .2s}
@@ -132,8 +120,6 @@
 .summary-note{max-width:none}
 .closing-memories{text-align:center;max-width:520px;margin:12px auto 60px}
 .closing-memories h2{font:400 34px/1.2 var(--serif);margin:12px 0 24px}
-.closing-photo{display:block;padding:10px;background:white;box-shadow:0 8px 30px #4a2f5e18;transform:rotate(-2deg);border:1px solid var(--line)}
-.closing-photo img{width:100%;height:auto}
 .closing-memories>p:last-child{font:italic 20px var(--serif);color:var(--purple);margin-top:30px}
 .photo-viewer{border:0;padding:48px 18px 18px;background:#fffdf9;border-radius:14px;width:max-content;max-width:calc(100vw - 24px);max-height:calc(100dvh - 32px);overflow:auto;box-shadow:0 20px 80px #0005}
 .photo-viewer::backdrop{background:#21172bdf}
@@ -167,31 +153,36 @@ button:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
 .floating-stars span:nth-child(3){left:14px;top:68%;font-size:17px;color:#c48e68;--star-tilt:8deg}
 .floating-stars span:nth-child(4){right:15px;top:82%;font-size:19px;--star-tilt:-10deg}
 
-.party-balloons {
+.balloon-bouquet {
   position: absolute;
-  inset: 0;
+  right: 3.5%;
+  bottom: 14%;
+  width: clamp(106px, 23%, 160px);
+  aspect-ratio: 1 / 1.18;
   z-index: 2;
   pointer-events: none;
+  isolation: isolate;
+  --rise: -86px;
 }
 
-.party-balloons span {
+.balloon-bouquet span {
   position: absolute;
-  width: clamp(17px, 5vw, 38px);
-  aspect-ratio: 3 / 4;
+  width: 34%;
+  aspect-ratio: 4 / 5;
   border-radius: 50% 50% 45% 45% / 46% 46% 54% 54%;
   background: radial-gradient(ellipse at 31% 26%, #fff9 0, transparent 35%), var(--balloon-color);
   box-shadow: inset -4px -4px 8px #42205026, 0 3px 7px #4a2f5e1a;
 }
 
-.party-balloons span::before,
-.party-balloons span::after {
+.balloon-bouquet span::before,
+.balloon-bouquet span::after {
   content: "";
   position: absolute;
   left: 50%;
   top: 100%;
 }
 
-.party-balloons span::before {
+.balloon-bouquet span::before {
   width: 6px;
   height: 5px;
   background: var(--balloon-color);
@@ -199,22 +190,35 @@ button:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
 
-.party-balloons span::after {
-  width: 7px;
-  height: 24px;
-  margin-top: 4px;
-  border-left: 1px solid #9b7aa7a6;
-  border-radius: 48%;
+.balloon-bouquet span::after {
+  z-index: -1;
+  height: var(--string-length);
+  border-left: 1px solid #967ba3;
+  transform-origin: top;
+  transform: rotate(var(--string-angle));
 }
 
-.party-balloons span:nth-child(1) { left: 2%; top: 34%; --balloon-color: #b991d4; --rise: -43px; --drift: 5px; --flight-time: 4.9s; --flight-delay: -.9s; }
-.party-balloons span:nth-child(2) { right: 2%; top: 28%; --balloon-color: #efaaae; --rise: -57px; --drift: -4px; --flight-time: 5.7s; --flight-delay: -2s; }
-.party-balloons span:nth-child(3) { left: 2%; top: 74%; --balloon-color: #e6bc64; --rise: -52px; --drift: -3px; --flight-time: 5.9s; --flight-delay: -3.4s; }
-.party-balloons span:nth-child(4) { right: 2%; top: 73%; --balloon-color: #91c6b0; --rise: -66px; --drift: 4px; --flight-time: 5.2s; --flight-delay: -1.8s; }
+.balloon-bouquet span:nth-child(1) { left: 6%; top: 15%; --balloon-color: #bc96d5; --string-angle: -25deg; --string-length: 150%; }
+.balloon-bouquet span:nth-child(2) { left: 25%; top: 0; --balloon-color: #efaaae; --string-angle: -7deg; --string-length: 180%; }
+.balloon-bouquet span:nth-child(3) { left: 50%; top: 4%; --balloon-color: #f2cd71; --string-angle: 11deg; --string-length: 175%; }
+.balloon-bouquet span:nth-child(4) { right: 0; top: 21%; --balloon-color: #d995b9; --string-angle: 29deg; --string-length: 140%; }
+.balloon-bouquet span:nth-child(5) { left: 0; top: 38%; --balloon-color: #91c6b0; --string-angle: -44deg; --string-length: 110%; }
+.balloon-bouquet span:nth-child(6) { right: 2%; top: 41%; --balloon-color: #a4c4e7; --string-angle: 44deg; --string-length: 100%; }
+.balloon-bouquet span:last-child {
+  left: 30%;
+  top: 25%;
+  width: 42%;
+  display: grid;
+  place-items: center;
+  color: #fffdf7;
+  font: bold clamp(22px, 5vw, 46px) / 1 var(--serif);
+  --balloon-color: #9e74be;
+  --string-angle: 0deg;
+  --string-length: 67%;
+}
 
-@keyframes party-balloon-float {
-  0%, 100% { transform: translate(0, 0) rotate(-7deg); }
-  52% { transform: translate(var(--drift), var(--rise)) rotate(8deg); }
+@media (max-width: 640px) {
+  .balloon-bouquet { bottom: 12%; --rise: -54px; }
 }
 
 @keyframes star-drift{
@@ -227,7 +231,7 @@ button:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
   89%{transform:translateY(1px)}
 }
 @media(prefers-reduced-motion:no-preference){
- .party-balloons span{animation:party-balloon-float var(--flight-time) ease-in-out var(--flight-delay) infinite}
+ .balloon-bouquet{animation:balloon-bob 4.5s ease-in-out infinite}
  .floating-stars span{animation:star-drift 5s ease-in-out infinite}
  .floating-stars span:nth-child(2){animation-delay:-1.7s;animation-duration:6s}
  .floating-stars span:nth-child(3){animation-delay:-3s;animation-duration:5.6s}
@@ -235,11 +239,10 @@ button:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
  .confetti-one{animation:star-drift 6s ease-in-out infinite;--star-tilt:12deg}
  .confetti-two{animation:star-drift 5s ease-in-out -2s infinite;--star-tilt:-8deg}
  .open-card>span{animation:invitation-bounce 2.6s ease-in-out infinite}
- .card-art{animation:balloon-bob 4.5s ease-in-out infinite}
 }
-body.motion-paused .party-balloons span,body.motion-paused .floating-stars span,body.motion-paused .stage-confetti,body.motion-paused .open-card>span,body.motion-paused .card-art{animation-play-state:paused}
+body.motion-paused .balloon-bouquet,body.motion-paused .floating-stars span,body.motion-paused .stage-confetti,body.motion-paused .open-card>span{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){
- .floating-stars span,.stage-confetti,.open-card>span,.card-art,.card-portrait{animation:none!important}
+ .balloon-bouquet,.floating-stars span,.stage-confetti,.open-card>span,.card-portrait{animation:none!important}
  .confetti-burst{display:none}
 }
 
