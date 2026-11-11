@@ -16,8 +16,8 @@
   <meta property="og:image:height" content="880">
   <meta property="og:image:alt" content="Grace’s portrait beside a bouquet of colorful balloons with a purple number six balloon">
   <link rel="icon" href="./assets/star.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=cleaner-invitation">
-  <script src="./party.js?v=birthday-sparkle-photo-fix" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=clearer-rsvp">
+  <script src="./party.js?v=clearer-rsvp" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to invitation</a>
@@ -109,24 +109,15 @@
       </div>
 
       <section class="rsvp-panel" id="rsvp" aria-labelledby="rsvp-title">
-        <div class="rsvp-heading"><p class="eyebrow">WE’D LOVE TO SEE YOU</p><h2 id="rsvp-title">Your RSVP</h2><p>Please reply once for your family.</p></div>
+        <div class="rsvp-heading">
+          <h2 id="rsvp-title">RSVP for your family</h2>
+          <p>One reply per family. No Google sign-in required.</p>
+        </div>
         <p id="rsvp-deadline" class="deadline" hidden></p>
-        <div id="rsvp-pending" class="pending-message"><span class="status-dot" aria-hidden="true"></span><div><strong>RSVPs open soon</strong><p>The form below shows what we’ll ask. Please check back to send your response.</p></div></div>
-        <form id="rsvp-preview" class="rsvp-preview" aria-label="Preview of the upcoming RSVP form" aria-describedby="rsvp-pending">
-          <fieldset disabled>
-            <legend>Can your family join us?</legend>
-            <div class="attendance-options"><label><input type="radio" name="attendance" value="yes"> Yes, we’ll be there!</label><label><input type="radio" name="attendance" value="no"> Sorry, we can’t make it</label></div>
-            <div class="field"><label for="parent-names">Parent/guardian name(s)</label><input id="parent-names" type="text" placeholder="e.g., Alex Chen and Sam Lee" autocomplete="name" aria-describedby="parent-names-help"><span class="field-help" id="parent-names-help">List one or both parents/guardians.</span></div>
-            <label class="field">Contact email<input type="email" placeholder="you@example.com" autocomplete="email"></label>
-            <label class="field">Children’s names<input type="text" placeholder="Names of children attending"></label>
-            <div class="count-fields"><label class="field">Children attending<select><option>Choose</option></select></label><label class="field">Adults attending<select><option>Choose</option></select></label></div>
-            <button class="button button-primary" type="submit" disabled>RSVPs open soon</button>
-          </fieldset>
-        </form>
+        <a id="rsvp-link" class="button button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdM5HC0R8ricC4-9P_1QMaPsA_pINJOzRDnY5neN-7pqtqB5Q/viewform?usp=header"
+           target="_blank" rel="noopener noreferrer">Open full-page RSVP <svg aria-hidden="true"><use href="#arrow-icon"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+        <p class="privacy-note"><svg aria-hidden="true"><use href="#lock-icon"/></svg><span>Only Grace’s family can see your reply.</span></p>
         <iframe id="rsvp-embed" title="RSVP for Grace’s sixth birthday" hidden loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        <a id="rsvp-link" class="button button-primary" hidden target="_blank" rel="noopener noreferrer">Open RSVP form <svg aria-hidden="true"><use href="#arrow-icon"/></svg><span class="sr-only"> (opens Google Forms in a new tab)</span></a>
-        <p class="privacy-note"><svg aria-hidden="true"><use href="#lock-icon"/></svg><span>Responses are for Grace’s family.<br>No public guest list.</span></p>
-        <noscript><p class="noscript-note">Please enable JavaScript to access the RSVP form.</p></noscript>
       </section>
     </div>
     <section class="closing-memories" aria-labelledby="closing-title">
