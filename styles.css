@@ -273,7 +273,7 @@ body.motion-paused .balloon-bouquet,body.motion-paused .floating-stars span,body
   margin: 0 0 14px;
 }
 .rsvp-panel.has-embed .privacy-note { margin-left: 12px; }
-.rsvp-panel iframe:not([hidden]) { display: block; height: 1060px; border-radius: 8px; }
+.rsvp-panel iframe:not([hidden]) { display: block; height: 1260px; border-radius: 8px; }
 
 @media (min-width: 901px) {
   .event-body {
