@@ -18,6 +18,24 @@
   <link rel="icon" href="./assets/star.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css?v=phone-invitation">
   <script src="./party.js?v=rsvp-on-request" defer></script>
+  <style>
+    .rsvp-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin-bottom: 12px; }
+    .rsvp-panel.has-embed .rsvp-actions { margin-left: 12px; }
+    .rsvp-panel .rsvp-actions #rsvp-link { width: auto; margin: 0; }
+    .rsvp-panel .rsvp-decline-button {
+      min-height: 44px; padding: 10px 16px; background: #fff; color: var(--purple);
+      border-color: #d9ccdf; font-size: 1rem;
+    }
+    .rsvp-panel .rsvp-decline-button:hover,
+    .rsvp-panel .rsvp-decline-button[aria-expanded="true"] { background: #f4eef7; }
+    .rsvp-panel #decline-panel iframe { display: block; height: 540px; }
+    .rsvp-panel.declining #rsvp-embed { display: none; }
+    .decline-fallback { margin: 0 0 16px; font-size: .875rem; }
+    @media (max-width: 640px) {
+      .rsvp-panel .rsvp-actions .button { flex: 1 1 auto; padding: 10px; gap: 6px; font-size: .875rem; }
+      .rsvp-panel .rsvp-actions #rsvp-link svg { width: 16px; height: 16px; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to invitation</a>
@@ -111,8 +129,17 @@
           <p>Please send one RSVP per family, whether or not your child can attend.</p>
         </div>
         <p class="deadline">Please RSVP by <time datetime="2026-11-22">Sunday, November 22</time>.</p>
-        <a id="rsvp-link" class="button button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxkF4VDI06OLsoHkxnw91wHGtMckd2jhyaUD6hGIKeWH8epQ/viewform"
-           target="_blank" rel="noopener noreferrer">Open RSVP form <svg aria-hidden="true"><use href="#arrow-icon"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+        <div class="rsvp-actions">
+          <a id="rsvp-link" class="button button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxkF4VDI06OLsoHkxnw91wHGtMckd2jhyaUD6hGIKeWH8epQ/viewform"
+             target="_blank" rel="noopener noreferrer">Open RSVP form <svg aria-hidden="true"><use href="#arrow-icon"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+          <button id="decline-toggle" type="button" class="button rsvp-decline-button"
+                  aria-expanded="false" aria-controls="decline-panel" hidden>I can’t come</button>
+          <noscript><a class="button rsvp-decline-button" href="https://docs.google.com/forms/d/e/1FAIpQLSc7cNLDDlPw1yA7j4rOE580wGyfVb-mfWb8cudQzT2P1zbb-w/viewform">I can’t come</a></noscript>
+        </div>
+        <div id="decline-panel" hidden>
+          <iframe title="Decline Grace’s birthday invitation" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <p class="decline-fallback"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc7cNLDDlPw1yA7j4rOE580wGyfVb-mfWb8cudQzT2P1zbb-w/viewform" target="_blank" rel="noopener noreferrer">Open decline form in a new tab</a></p>
+        </div>
         <p class="privacy-note"><svg aria-hidden="true"><use href="#lock-icon"/></svg><span>Only Grace’s family can see your reply.</span></p>
       </section>
     </div>
@@ -127,5 +154,25 @@
   </dialog>
   <footer class="footer wrap"><a href="#main" class="footer-brand">Grace is six</a><p><time datetime="2026-12-06">December 6, 2026</time> <span class="footer-separator" aria-hidden="true">·</span> <span class="footer-credit">Made with love</span></p></footer>
   <div class="mobile-rsvp"><span>Grace’s 6th Birthday<small>Sunday, December 6</small></span><a class="button button-primary" href="#rsvp">RSVP</a></div>
+  <script>
+    (() => {
+      const button = document.getElementById("decline-toggle");
+      const panel = document.getElementById("decline-panel");
+      const frame = panel.querySelector("iframe");
+
+      button.addEventListener("click", () => {
+        const open = panel.hidden;
+        panel.hidden = !open;
+        button.setAttribute("aria-expanded", String(open));
+        button.closest(".rsvp-panel").classList.toggle("declining", open);
+        if (open && !frame.hasAttribute("src")) {
+          const url = new URL(panel.querySelector("a").href);
+          url.searchParams.set("embedded", "true");
+          frame.src = url.href;
+        }
+      });
+      button.hidden = false;
+    })();
+  </script>
 </body>
 </html>
