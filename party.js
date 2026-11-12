@@ -1,28 +1,3 @@
-(() => {
-  const url = new URL(document.getElementById("rsvp-link").href);
-  const longForm = url.protocol === "https:" && url.hostname === "docs.google.com" &&
-    /^\/forms\/(?:u\/\d+\/)?d\/(?:e\/)?[^/]+\/viewform\/?$/.test(url.pathname);
-  if (!longForm) return;
-
-  const rsvpPanel = document.getElementById("rsvp");
-  const wideScreen = window.matchMedia("(min-width: 641px)");
-  function loadEmbed() {
-    if (location.hash !== "#rsvp" || !wideScreen.matches || rsvpPanel.classList.contains("has-embed")) return;
-
-    url.searchParams.set("embedded", "true");
-    const embed = document.createElement("iframe");
-    embed.id = "rsvp-embed";
-    embed.title = "RSVP for Grace’s sixth birthday";
-    embed.referrerPolicy = "strict-origin-when-cross-origin";
-    embed.src = url.href;
-    rsvpPanel.append(embed);
-    rsvpPanel.classList.add("has-embed");
-  }
-  loadEmbed();
-  window.addEventListener("hashchange", loadEmbed);
-  wideScreen.addEventListener("change", loadEmbed);
-})();
-
 const invitationCard = document.querySelector(".invitation-card");
 const confettiBurst = document.querySelector(".confetti-burst");
 const confettiColors = ["#a569c2", "#e47480", "#e9b63e", "#5a9f87", "#6c93d1"];
