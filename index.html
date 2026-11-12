@@ -17,10 +17,9 @@
   <meta property="og:image:alt" content="Grace’s portrait beside a bouquet of colorful balloons with a purple number six balloon">
   <link rel="icon" href="./assets/star.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css?v=phone-invitation">
-  <script src="./party.js?v=rsvp-on-request" defer></script>
+  <script src="./party.js?v=rsvp-click-only" defer></script>
   <style>
     .rsvp-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin-bottom: 12px; }
-    .rsvp-panel.has-embed .rsvp-actions { margin-left: 12px; }
     .rsvp-panel .rsvp-actions #rsvp-link { width: auto; margin: 0; }
     .rsvp-panel .rsvp-decline-button {
       min-height: 44px; padding: 10px 16px; background: #fff; color: var(--purple);
@@ -29,7 +28,6 @@
     .rsvp-panel .rsvp-decline-button:hover,
     .rsvp-panel .rsvp-decline-button[aria-expanded="true"] { background: #f4eef7; }
     .rsvp-panel #decline-panel iframe { display: block; height: 540px; }
-    .rsvp-panel.declining #rsvp-embed { display: none; }
     .decline-fallback { margin: 0 0 16px; font-size: .875rem; }
     @media (max-width: 640px) {
       .rsvp-panel .rsvp-actions .button { flex: 1 1 auto; padding: 10px; gap: 6px; font-size: .875rem; }
@@ -164,7 +162,6 @@
         const open = panel.hidden;
         panel.hidden = !open;
         button.setAttribute("aria-expanded", String(open));
-        button.closest(".rsvp-panel").classList.toggle("declining", open);
         if (open && !frame.hasAttribute("src")) {
           const url = new URL(panel.querySelector("a").href);
           url.searchParams.set("embedded", "true");
